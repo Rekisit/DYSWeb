@@ -640,6 +640,35 @@
                 height: 12px;
             }
         }
+        
+        .video-section {
+            background-color: var(--black);
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .custom-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        /* Optimización para móviles */
+        @media (max-width: 768px) {
+            .video-container {
+                margin: 0 5%;
+                border-radius: 8px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -702,6 +731,18 @@
                     </div>
                 </div>
                 <div class="carousel-item">
+                    <img src="entrada.webp" alt="Zonas Comunes">
+                    <div class="carousel-caption">
+                        <h3>Recepción</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="espera.webp" alt="Zonas Comunes">
+                    <div class="carousel-caption">
+                        <h3>Zona de Espera</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
                     <img src="diri1.webp" alt="Clases Dirigidas">
                     <div class="carousel-caption">
                         <h3>Sala de Clases Grupales</h3>
@@ -726,9 +767,27 @@
                     </div>
                 </div>
                 <div class="carousel-item">
+                    <img src="varios.webp" alt="Varias instalaciones" class="carousel-image">
+                    <div class="carousel-caption">
+                        <h3>Clases Dirigidas</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
                     <img src="gym4.webp" alt="Zona musculacion">
                     <div class="carousel-caption">
                         <h3>Zona de Musculación</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="gym2.webp" alt="Vista adicional del gimnasio" class="carousel-image">
+                    <div class="carousel-caption">
+                        <h3>Área de Entrenamiento</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="gym3.webp" alt="Zona Mancuernas" class="carousel-image">
+                    <div class="carousel-caption">
+                        <h3>Zona de Peso Libre</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -743,48 +802,39 @@
                         <h3>Área de Fisioterapia</h3>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="entrada.webp" alt="Zonas Comunes">
-                    <div class="carousel-caption">
-                        <h3>Recepción</h3>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="espera.webp" alt="Zonas Comunes">
-                    <div class="carousel-caption">
-                        <h3>Zona de Espera</h3>
-                    </div>
-                </div>
+
             </div>
             <button class="carousel-control prev">&lt;</button>
             <button class="carousel-control next">&gt;</button>
             <div class="carousel-indicators">
                 <div class="indicator active" data-title="Logo"></div>
+                <div class="indicator" data-title="Espera"></div>
+                <div class="indicator" data-title="Entrenamiento"></div>
                 <div class="indicator" data-title="Clases"></div>
                 <div class="indicator" data-title="Funcional"></div>
                 <div class="indicator" data-title="Cardio"></div>
                 <div class="indicator" data-title="Dirigidas"></div>
                 <div class="indicator" data-title="Musculación"></div>
+                <div class="indicator" data-title="Máquinas"></div>
+                <div class="indicator" data-title="Varias"></div>
                 <div class="indicator" data-title="Fisioterapia"></div>
                 <div class="indicator" data-title="Tratamientos"></div>
                 <div class="indicator" data-title="Recepción"></div>
-                <div class="indicator" data-title="Espera"></div>
             </div>
         </div>
     </section>
     
+    <!-- Sección de Video HTML5 -->
     <section id="video" class="video-section">
         <div class="section-title">
             <h2>Conoce Nuestro Gimnasio</h2>
         </div>
         <div class="video-container">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/j9769Y5XqCM" 
-                        title="Video promocional DYS Gimnasio" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-            </div>
+            <video class="custom-video" controls playsinline poster="video-poster.jpg">
+                <source src="videoinstalaciones.webm" type="video/webm">
+                <source src="videoinstalaciones.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
         </div>
     </section>
     
@@ -824,13 +874,13 @@
             <div class="social-section">
                 <h3 class="social-title">Síguenos en Redes</h3>
                 <div class="social-buttons">
-                    <a href="https://instagram.com/tugimnasio" class="social-btn" target="_blank">
+                    <a href="https://instagram.com/ejemploññññ" class="social-btn" target="_blank">
                         <i class="fab fa-instagram"></i> Instagram
                     </a>
-                    <a href="https://facebook.com/tugimnasio" class="social-btn" target="_blank">
+                    <a href="https://facebook.com/ejemploññññ" class="social-btn" target="_blank">
                         <i class="fab fa-facebook-f"></i> Facebook
                     </a>
-                    <a href="https://wa.me/34974473514" class="social-btn" target="_blank">
+                    <a href="https://wa.me/ejemplo" class="social-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
