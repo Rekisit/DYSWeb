@@ -6,8 +6,6 @@
     <title>DYS | Gimnasio Fraga</title>
     <style>
 
-
-        /* Optimizaciones críticas - Añadir al inicio del CSS */
         .hero {
             will-change: transform;
             backface-visibility: hidden;
@@ -29,6 +27,24 @@
             background: url('gym4.webp') no-repeat center center/cover;
             opacity: 0;
             z-index: -1;
+        }
+
+        /* Scroll suave para toda la página */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Altura de tu navbar */
+        }
+
+        /* Para navegadores que no soportan scroll-behavior */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Asegurar que las secciones tengan offset para el navbar fijo */
+        section {
+            scroll-margin-top: 100px;
         }
 
 
@@ -685,8 +701,8 @@
                 <a href="#galeria">Galería</a>
                 <a href="#video">Video</a>
                 <a href="#ubicacion">Ubicación</a>
+                <a href="#contacto">Contacto</a>
             </div>
-        </nav>
     </header>
     
     <section class="hero">
@@ -896,9 +912,14 @@
             let lastScrollTop = 0;
             const navbar = document.querySelector('header');
             const scrollThreshold = 60;
+            const navbarHeight = navbar.offsetHeight;
             
             // Añadir transición suave al navbar
             navbar.style.transition = 'transform 0.3s ease-in-out';
+            
+            // Configurar scroll-padding dinámico
+            document.documentElement.style.setProperty('--scroll-padding', navbarHeight + 'px');
+            document.documentElement.style.scrollPaddingTop = navbarHeight + 'px';
             
             window.addEventListener('scroll', function() {
                 if (window.innerWidth <= 768) {
@@ -919,7 +940,38 @@
                 }
             });
 
-            // JavaScript para el Carousel Mejorado
+            // Scroll suave para enlaces de navegación
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const targetPosition = targetElement.offsetTop - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Actualizar URL
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+
+            // JavaScript para el Carousel Mejorado (mantener tu código existente)
             const carouselInner = document.querySelector('.carousel-inner');
             const items = document.querySelectorAll('.carousel-item');
             const indicators = document.querySelectorAll('.indicator');
