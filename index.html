@@ -398,8 +398,15 @@
             font-size: 1.2rem;
         }
         
+        .map-container-full-size {
+            height: 100%;
+            width: 100%;
+            padding: 2rem 1rem 2rem 1rem;
+        }
+
         .map-container {
-            height: 400px;
+            height: 100%;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -558,8 +565,11 @@
                 grid-template-columns: 1fr;
             }
             
-            .map-container {
+
+            .map-container-full-size {
                 height: 300px;
+                padding: 0;
+                margin-bottom: 2rem;
             }
             
             .footer-content {
@@ -1337,7 +1347,7 @@
                     </div>
                 </div>
                 
-                <div class="premium-info">
+                <div class="premium-info premium-info-margin">
                     <div class="premium-badge">
                         <i class="fas fa-crown"></i>
                         <span>Premium</span>
@@ -1345,8 +1355,10 @@
                     <p>Con la membresía Premium disfruta de acceso los 365 días al año, de 8:00h a 20:00h.</p>
                 </div>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.1110858609013!2d0.33458477644524104!3d41.52707448731858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a73f2ed1c040cb%3A0xee386058040464c6!2sDys%20Bajo%20Cinca!5e1!3m2!1ses!2ses!4v1752751506156!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-container-full-size">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.1110858609013!2d0.33458477644524104!3d41.52707448731858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a73f2ed1c040cb%3A0xee386058040464c6!2sDys%20Bajo%20Cinca!5e1!3m2!1ses!2ses!4v1752751506156!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
     </style>
@@ -1416,13 +1428,16 @@
             color: var(--light);
             font-weight: 400;
         }
-        
+
         .premium-info {
-            margin-top: 1.5rem;
             padding: 1.2rem;
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
             border-radius: 10px;
             border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .premium-info-margin {
+            margin-top: 1.5rem;
         }
         
         .premium-badge {
