@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DYS | Gimnasio Fraga</title>
     <!-- Iconos / Favicon -->
-    <link rel="icon" href="DYSLOGO.svg" type="image/svg+xml">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <!-- Opcional para compatibilidad extra -->
-    <!-- <link rel="alternate icon" href="DYSLOGO.png" type="image/png">
-    <link rel="apple-touch-icon" href="DYSLOGO.png"> -->
+    <!-- <link rel="alternate icon" href="logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="logo.png"> -->
     <meta name="theme-color" content="#121212">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <style>
-
         /* --- Splash de carga con el logo --- */
         #splash {
             position: fixed;
@@ -24,16 +25,17 @@
             transition: opacity .35s ease;
         }
 
-            #splash svg, #splash img {
-                width: clamp(120px, 18vw, 220px);
-                height: auto;
-                filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
-            }
+        #splash svg,
+        #splash img {
+            width: clamp(120px, 18vw, 220px);
+            height: auto;
+            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .45));
+        }
 
-            #splash.hidden {
-                opacity: 0;
-                pointer-events: none;
-            }
+        #splash.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
 
         .hero {
             will-change: transform;
@@ -53,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('gym4.webp') no-repeat center center/cover;
+            background: url('assets/gym4.webp') no-repeat center center/cover;
             opacity: 0;
             z-index: -1;
         }
@@ -61,7 +63,8 @@
         /* Scroll suave para toda la página */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px; /* Altura de tu navbar */
+            scroll-padding-top: 100px;
+            /* Altura de tu navbar */
         }
 
         /* Para navegadores que no soportan scroll-behavior */
@@ -125,36 +128,36 @@
             gap: 2rem;
         }
 
-            .nav-links a {
-                color: var(--light);
-                text-decoration: none;
-                font-weight: 500;
-                transition: 0.3s;
-                position: relative;
-            }
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
 
-                .nav-links a:hover {
-                    color: var(--yellow);
-                }
+        .nav-links a:hover {
+            color: var(--yellow);
+        }
 
-                .nav-links a::after {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 2px;
-                    background: var(--yellow);
-                    bottom: -5px;
-                    left: 0;
-                    transition: 0.3s;
-                }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--yellow);
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
 
-                .nav-links a:hover::after {
-                    width: 100%;
-                }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('gym4.webp');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/gym4.webp');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -164,21 +167,21 @@
             padding: 0 5%;
         }
 
-            .hero h1 {
-                font-size: clamp(2.5rem, 5vw, 4rem);
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-            }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
 
-                .hero h1 span {
-                    color: var(--yellow);
-                }
+        .hero h1 span {
+            color: var(--yellow);
+        }
 
-            .hero p {
-                font-size: clamp(1rem, 2vw, 1.2rem);
-                margin-bottom: 2rem;
-                max-width: 600px;
-            }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
 
         .btn {
             background-color: var(--yellow);
@@ -193,10 +196,10 @@
             transition: 0.3s;
         }
 
-            .btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
 
         .section-title {
             text-align: center;
@@ -204,21 +207,21 @@
             position: relative;
         }
 
-            .section-title h2 {
-                font-size: clamp(1.8rem, 3vw, 2.5rem);
-                text-transform: uppercase;
-            }
+        .section-title h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            text-transform: uppercase;
+        }
 
-                .section-title h2::after {
-                    content: '';
-                    position: absolute;
-                    width: 80px;
-                    height: 3px;
-                    background: var(--yellow);
-                    bottom: -10px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--yellow);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
         section {
             padding: 5rem 5%;
@@ -242,21 +245,21 @@
             border-left: 3px solid var(--yellow);
         }
 
-            .service-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
 
-            .service-card i {
-                font-size: 2.5rem;
-                color: var(--yellow);
-                margin-bottom: 1.5rem;
-            }
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+        }
 
-            .service-card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
         /* Carousel Mejorado */
         .gallery {
@@ -284,17 +287,17 @@
             overflow: hidden;
         }
 
-            .carousel-item img {
-                width: 100%;
-                height: 600px;
-                object-fit: cover;
-                display: block;
-                transition: transform 0.5s ease;
-            }
+        .carousel-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
 
-            .carousel-item:hover img {
-                transform: scale(1.05);
-            }
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
 
         .carousel-caption {
             position: absolute;
@@ -306,12 +309,12 @@
             text-align: center;
         }
 
-            .carousel-caption h3 {
-                font-size: 1.8rem;
-                margin-bottom: 0.5rem;
-                color: var(--yellow);
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            }
+        .carousel-caption h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--yellow);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
 
         .carousel-control {
             position: absolute;
@@ -333,18 +336,18 @@
             justify-content: center;
         }
 
-            .carousel-control:hover {
-                background: var(--yellow);
-                transform: translateY(-50%) scale(1.1);
-            }
+        .carousel-control:hover {
+            background: var(--yellow);
+            transform: translateY(-50%) scale(1.1);
+        }
 
-            .carousel-control.prev {
-                left: 20px;
-            }
+        .carousel-control.prev {
+            left: 20px;
+        }
 
-            .carousel-control.next {
-                right: 20px;
-            }
+        .carousel-control.next {
+            right: 20px;
+        }
 
         .carousel-indicators {
             display: flex;
@@ -365,37 +368,37 @@
             position: relative;
         }
 
-            .indicator:hover {
-                opacity: 0.8;
-                transform: scale(1.2);
-            }
+        .indicator:hover {
+            opacity: 0.8;
+            transform: scale(1.2);
+        }
 
-            .indicator.active {
-                background: var(--yellow);
-                opacity: 1;
-                transform: scale(1.2);
-            }
+        .indicator.active {
+            background: var(--yellow);
+            opacity: 1;
+            transform: scale(1.2);
+        }
 
-            .indicator::after {
-                content: attr(data-title);
-                position: absolute;
-                bottom: 25px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(0, 0, 0, 0.8);
-                color: white;
-                padding: 5px 10px;
-                border-radius: 4px;
-                font-size: 0.8rem;
-                white-space: nowrap;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                pointer-events: none;
-            }
+        .indicator::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
 
-            .indicator:hover::after {
-                opacity: 1;
-            }
+        .indicator:hover::after {
+            opacity: 1;
+        }
 
         /* Ubicación */
         .location {
@@ -409,23 +412,23 @@
             padding: 2rem;
         }
 
-            .location-info h3 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-                color: var(--yellow);
-            }
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--yellow);
+        }
 
-            .location-info p {
-                margin-bottom: 1rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
+        .location-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-            .location-info i {
-                color: var(--yellow);
-                font-size: 1.2rem;
-            }
+        .location-info i {
+            color: var(--yellow);
+            font-size: 1.2rem;
+        }
 
         .map-container-full-size {
             height: 100%;
@@ -441,11 +444,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-            .map-container iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
         /* Sección Video YouTube - Tamaño reducido */
         .video-section {
@@ -470,14 +473,14 @@
             height: 0;
         }
 
-            .video-wrapper iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
         /* Responsive para móviles */
         @media (max-width: 768px) {
@@ -559,15 +562,15 @@
             border: 2px solid var(--yellow);
         }
 
-            .social-btn:hover {
-                background-color: var(--yellow);
-                color: var(--black);
-                transform: translateY(-3px);
-            }
+        .social-btn:hover {
+            background-color: var(--yellow);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
 
-            .social-btn i {
-                font-size: 1.2rem;
-            }
+        .social-btn i {
+            font-size: 1.2rem;
+        }
 
         .copyright {
             color: #888;
@@ -585,10 +588,10 @@
                 text-align: center;
             }
 
-                .hero p {
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
 
             .location {
                 grid-template-columns: 1fr;
@@ -646,15 +649,17 @@
                 padding: 1rem;
             }
 
-                .carousel-caption h3 {
-                    font-size: 1.4rem;
-                }
+            .carousel-caption h3 {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 768px) {
             .hero {
-                padding-top: 80px; /* Asegura que el contenido no quede detrás del navbar */
-                min-height: calc(100vh - 80px); /* Ajusta la altura considerando el navbar */
+                padding-top: 80px;
+                /* Asegura que el contenido no quede detrás del navbar */
+                min-height: calc(100vh - 80px);
+                /* Ajusta la altura considerando el navbar */
             }
 
             /* Asegura que el navbar tenga un fondo sólido cuando esté visible */
@@ -750,24 +755,24 @@
             transition: all 0.3s ease;
         }
 
-            .tab-btn.active {
-                background-color: var(--yellow);
-                color: var(--black);
-            }
+        .tab-btn.active {
+            background-color: var(--yellow);
+            color: var(--black);
+        }
 
-            .tab-btn:hover:not(.active) {
-                background-color: rgba(255, 215, 0, 0.2);
-            }
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(255, 215, 0, 0.2);
+        }
 
         .tab-content {
             display: none;
             overflow-x: auto;
         }
 
-            .tab-content.active {
-                display: block;
-                animation: fadeIn 0.5s ease;
-            }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
 
         @keyframes fadeIn {
             from {
@@ -790,26 +795,27 @@
             min-width: 600px;
         }
 
-            .schedule-table th, .schedule-table td {
-                padding: 1rem;
-                text-align: center;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-            .schedule-table th {
-                background-color: var(--yellow);
-                color: var(--black);
-                font-weight: 600;
-            }
+        .schedule-table th {
+            background-color: var(--yellow);
+            color: var(--black);
+            font-weight: 600;
+        }
 
-            .schedule-table tr:nth-child(even) {
-                background-color: rgba(255, 255, 255, 0.05);
-            }
+        .schedule-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
 
-            .schedule-table td:first-child {
-                font-weight: 600;
-                background-color: rgba(255, 215, 0, 0.1);
-            }
+        .schedule-table td:first-child {
+            font-weight: 600;
+            background-color: rgba(255, 215, 0, 0.1);
+        }
 
         .schedule-note {
             text-align: center;
@@ -835,22 +841,24 @@
                 font-size: 0.85rem;
             }
 
-                .schedule-table th,
-                .schedule-table td {
-                    padding: 0.7rem 0.5rem;
-                }
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.7rem 0.5rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Precargar la imagen más importante -->
-    <link rel="preload" href="gym4.webp" as="image" imagesrcset="gym4.webp" imagesizes="100vw">
+    <link rel="preload" href="assets/gym4.webp" as="image" imagesrcset="assets/gym4.webp" imagesizes="100vw">
 </head>
+
 <body>
     <header>
         <!-- Splash inicial -->
         <div id="splash" aria-hidden="true">
-            <img src="DYSLOGO.svg" alt="DYS cargando">
+            <img src="logo.svg" alt="DYS cargando">
         </div>
 
         <nav>
@@ -865,12 +873,13 @@
                 <a href="#contacto">Contacto</a>
             </div>
     </header>
-    
+
     <section class="hero">
         <h1>Transforma tu <span>cuerpo</span></h1>
-        <p>Descubre el gimnasio más exclusivo de la ciudad con equipos de última generación y entrenadores profesionales que te guiarán hacia tus objetivos.</p>
+        <p>Descubre el gimnasio más exclusivo de la ciudad con equipos de última generación y entrenadores profesionales
+            que te guiarán hacia tus objetivos.</p>
     </section>
-    
+
     <section id="servicios" class="services">
         <div class="section-title">
             <h2>Nuestros Servicios</h2>
@@ -879,7 +888,8 @@
             <div class="service-card">
                 <i class="fas fa-dumbbell"></i>
                 <h3>Entrenamiento Personalizado</h3>
-                <p>Programas diseñados específicamente para tus necesidades y objetivos físicos con seguimiento constante.</p>
+                <p>Programas diseñados específicamente para tus necesidades y objetivos físicos con seguimiento
+                    constante.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-heartbeat"></i>
@@ -889,12 +899,14 @@
             <div class="service-card">
                 <i class="fas fa-user-md"></i>
                 <h3>Fisioterapia</h3>
-                <p>Tratamientos personalizados orientados a prevenir o tratar lesiones, mejorar la movilidad y favorecer la readaptación a la competición.</p>
+                <p>Tratamientos personalizados orientados a prevenir o tratar lesiones, mejorar la movilidad y favorecer
+                    la readaptación a la competición.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-tshirt"></i>
                 <h3>Ropa y Suplementación</h3>
-                <p>Venta de ropa deportiva de calidad y suplementación deportiva para optimizar tu rendimiento y recuperación.</p>
+                <p>Venta de ropa deportiva de calidad y suplementación deportiva para optimizar tu rendimiento y
+                    recuperación.</p>
             </div>
         </div>
     </section>
@@ -904,338 +916,20 @@
         <div class="section-title">
             <h2>Horarios de Clases</h2>
         </div>
-        
+
         <div class="tabs">
             <button class="tab-btn active" data-tab="actividades-dirigidas">Actividades Dirigidas</button>
             <button class="tab-btn" data-tab="actividades-especializadas">Actividades Especializadas</button>
             <button class="tab-btn" data-tab="crossdys">CrossDYS</button>
         </div>
-        
-        <div class="tab-content active" id="actividades-dirigidas">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                        <th>Sábado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>06:30h</td>
-                        <td></td>
-                        <td>BIKE</td>
-                        <td></td>
-                        <td>BIKE</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>09:15h</td>
-                        <td>BIKE</td>
-                        <td>TONIFICAT</td>
-                        <td></td>
-                        <td>BIKE</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>10:15h</td>
-                        <td></td>
-                        <td></td>
-                        <td> </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>11:30h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>KICK BOXING BABY</td>
-                    </tr>
-                    <tr>
-                        <td>15:15h</td>
-                        <td>BIKE</td>
-                        <td>GAP</td>
-                        <td>TONIFICAT</td>
-                        <td>FITNESS DIRIGIDO</td>
-                        <td>BIKE</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>16:00h</td>
-                        <td>ABDOEXPRESS</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>18:15h</td>
-                        <td>TONIFICAT</td>
-                        <td>KICK BOXING BABY</td>
-                        <td>ZUMBA</td>
-                        <td>TONIFICAT</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>19:15h</td>
-                        <td>BIKE</td>
-                        <td>TONIFICAT</td>
-                        <td>ZUMBA</td>
-                        <td>BIKE</td>
-                        <td>ZUMBA</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>20:00h</td>
-                        <td></td>
-                        <td>JIU JITSU</td>
-                        <td></td>
-                        <td></td>
-                        <td>JIU JITSU</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>20:15h</td>
-                        <td>KICK BOXING</td>
-                        <td>BIKE</td>
-                        <td>BIKE / KICK BOXING</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="schedule-note">CONSULTE A SU ENTRENADOR ANTES DE REALIZAR ACTIVIDADES DIRIGIDAS. TE AYUDARÁN A ESCOGER LA MEJOR OPCIÓN.</p>
-        </div>
-        
-        <div class="tab-content" id="actividades-especializadas">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>08:15h</td>
-                        <td></td>
-                        <td>REFORMER</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>09:15h</td>
-                        <td>REFORMER</td>
-                        <td></td>
-                        <td>ESPALDA SANA</td>
-                        <td>EMBARAZO ACTIVO</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>10:15h</td>
-                        <td>ESPALDA SANA</td>
-                        <td></td>
-                        <td>REFORMER</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>11:15h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>15:15h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>REFORMER</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>17:15h</td>
-                        <td>SUELO PÉLVICO</td>
-                        <td>RECUPERACIÓN POSTPARTO</td>
-                        <td></td>
-                        <td></td>
-                        <td>EMBARAZO ACTIVO*</td>
-                    </tr>
-                    <tr>
-                        <td>18:15h</td>
-                        <td>REFORMER</td>
-                        <td>REFORMER</td>
-                        <td>REFORMER</td>
-                        <td>REFORMER</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>19:00h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>19:15h</td>
-                        <td>REFORMER</td>
-                        <td>REFORMER</td>
-                        <td>REFORMER</td>
-                        <td>HIPOPRESIVOS LPF</td>
-                    </tr>
-                    <tr>
-                        <td>20:15H</td>
-                        <td>PILATES</td>
-                        <td>PILATES</td>
-                        <td></td>
-                        <td>PILATES</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>20:30H</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="schedule-note">CONSULTE A SU ENTRENADOR ANTES DE REALIZAR ACTIVIDADES DIRIGIDAS. TE AYUDARÁN A ESCOGER LA MEJOR OPCIÓN.</p>
 
-        </div>
-        
-        <div class="tab-content" id="crossdys">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                        <th>Sábado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>06:30h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>09:15h</td>
-                        <td>CROSSDYS</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>CROSSDYS</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>10:15h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>CROSSDYS</td>
-                    </tr>
-                    <tr>
-                        <td>11:30h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>15:15h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>16:45h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>18:15h</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>19:15h</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>20:15h</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td>CROSSDYS</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>21:00h</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="schedule-note">CONSULTE A SU ENTRENADOR ANTES DE REALIZAR ACTIVIDADES DIRIGIDAS. TE AYUDARÁN A ESCOGER LA MEJOR OPCIÓN.</p>
-        </div>
+        <!-- Contenedores de tablas -->
+        <div id="actividades-dirigidas" class="tab-content active"></div>
+        <div id="actividades-especializadas" class="tab-content"></div>
+        <div id="crossdys" class="tab-content"></div>
+
     </section>
-    
+
     <!-- Carousel de Fotos con 10 imágenes - Mejorado -->
     <section id="galeria" class="gallery">
         <div class="section-title">
@@ -1244,79 +938,79 @@
         <div class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="loog.webp" alt="DYS: Deporte y Salud">
+                    <img src="assets/logo.webp" alt="DYS: Deporte y Salud">
                     <div class="carousel-caption">
                         <h3>DYS: Deporte y Salud</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="entrada.webp" alt="Zonas Comunes">
+                    <img src="assets/entrada.webp" alt="Zonas Comunes">
                     <div class="carousel-caption">
                         <h3>Recepción</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="espera.webp" alt="Zonas Comunes">
+                    <img src="assets/espera.webp" alt="Zonas Comunes">
                     <div class="carousel-caption">
                         <h3>Zona de Espera</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="diri1.webp" alt="Clases Spinning">
+                    <img src="assets/diri1.webp" alt="Clases Spinning">
                     <div class="carousel-caption">
                         <h3>Sala de Spinning</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="diri4.webp" alt="Clases Spinning">
+                    <img src="assets/diri4.webp" alt="Clases Spinning">
                     <div class="carousel-caption">
                         <h3>Sala de Spinning</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="duri3.webp" alt="Clases Spinning">
+                    <img src="assets/duri3.webp" alt="Clases Spinning">
                     <div class="carousel-caption">
                         <h3>Sala de Spinning</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="diri2.webp" alt="Clases Dirigidas">
+                    <img src="assets/diri2.webp" alt="Clases Dirigidas">
                     <div class="carousel-caption">
                         <h3>Clases Dirigidas</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="varios.webp" alt="Clases Dirigidas" class="carousel-image">
+                    <img src="assets/varios.webp" alt="Clases Dirigidas" class="carousel-image">
                     <div class="carousel-caption">
                         <h3>Clases Dirigidas</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="gym4.webp" alt="Zona musculacion">
+                    <img src="assets/gym4.webp" alt="Zona musculacion">
                     <div class="carousel-caption">
                         <h3>Zona de Musculación</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="gym2.webp" alt="Área de Entrenamiento" class="carousel-image">
+                    <img src="assets/gym2.webp" alt="Área de Entrenamiento" class="carousel-image">
                     <div class="carousel-caption">
                         <h3>Área de Entrenamiento</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="gym3.webp" alt="Zona Peso Libre" class="carousel-image">
+                    <img src="assets/gym3.webp" alt="Zona Peso Libre" class="carousel-image">
                     <div class="carousel-caption">
                         <h3>Zona de Peso Libre</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="fisio1.webp" alt="Fisioterapia">
+                    <img src="assets/fisio1.webp" alt="Fisioterapia">
                     <div class="carousel-caption">
                         <h3>Área de Fisioterapia</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="fisio2.webp" alt="Fisioterapia">
+                    <img src="assets/fisio2.webp" alt="Fisioterapia">
                     <div class="carousel-caption">
                         <h3>Área de Fisioterapia</h3>
                     </div>
@@ -1342,22 +1036,22 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Sección de Video HTML5 -->
     <section id="video" class="video-section">
         <div class="section-title">
             <h2>Conoce Nuestro Gimnasio</h2>
         </div>
         <div class="video-container">
-            <video class="custom-video" controls playsinline poster="video-poster.jpg">
-                <source src="videoinstalaciones.webm" type="video/webm">
-                <source src="videoinstalaciones.mp4" type="video/mp4">
+            <video class="custom-video" controls playsinline poster="assets/video-poster.jpg">
+                <source src="assets/videoinstalaciones.webm" type="video/webm">
+                <source src="assets/videoinstalaciones.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
         </div>
     </section>
-    
-<!-- Sección Ubicación Mejorada -->
+
+    <!-- Sección Ubicación Mejorada -->
     <section id="ubicacion" class="location-section">
         <div class="section-title">
             <h2>Dónde Encontrarnos</h2>
@@ -1368,8 +1062,8 @@
                     <i class="fas fa-map-marker-alt icon-location"></i>
                     <span>C. de la Hermana Andresa, 36, Fraga, Huesca</span>
                 </div>
-               
-                
+
+
                 <div class="schedule">
                     <h4><i class="fas fa-calendar-alt"></i> Horarios</h4>
                     <div class="schedule-item">
@@ -1385,7 +1079,7 @@
                         <span class="hours">Cerrado</span>
                     </div>
                 </div>
-                
+
                 <div class="premium-info premium-info-margin">
                     <div class="premium-badge">
                         <i class="fas fa-crown"></i>
@@ -1396,369 +1090,427 @@
             </div>
             <div class="map-container-full-size">
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.1110858609013!2d0.33458477644524104!3d41.52707448731858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a73f2ed1c040cb%3A0xee386058040464c6!2sDys%20Bajo%20Cinca!5e1!3m2!1ses!2ses!4v1752751506156!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.1110858609013!2d0.33458477644524104!3d41.52707448731858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a73f2ed1c040cb%3A0xee386058040464c6!2sDys%20Bajo%20Cinca!5e1!3m2!1ses!2ses!4v1752751506156!5m2!1ses!2ses"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-    </style>
+        </style>
 
-    <style>
-        .premium-badge i {
-            color: rgb(17, 17, 17);
-        }
-
-    </style>
-
-    <style>
-        /* Estilos para la sección de ubicación mejorada */
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 0.8rem;
-        }
-        .icon-location {
-            margin-right: 6px; /* separa el icono del texto */
-        }
-        .contact-item i {
-            color: var(--yellow);
-            width: 20px;
-            text-align: center;
-        }
-        
-        .schedule {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 10px;
-            border-left: 3px solid var(--yellow);
-        }
-        
-        .schedule h4 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--yellow);
-            font-size: 1.2rem;
-        }
-        
-        .schedule-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .schedule-item:last-child {
-            border-bottom: none;
-        }
-        
-        .schedule-item.closed .hours {
-            color: #ff4757;
-        }
-        
-        .days {
-            font-weight: 500;
-        }
-        
-        .hours {
-            color: var(--light);
-            font-weight: 400;
-        }
-
-        .premium-info {
-            padding: 1.2rem;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-            border-radius: 10px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .premium-info-margin {
-            margin-top: 1.5rem;
-        }
-        
-        .premium-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--yellow);
-            color: var(--black);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .premium-badge i {
-            font-size: 0.9rem;
-        }
-        
-        .premium-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: var(--light);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .schedule-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.2rem;
+        <style>
+            .premium-badge i {
+                color: rgb(17, 17, 17);
             }
-            
-            .premium-info {
+        </style>
+
+        <style>
+            /* Estilos para la sección de ubicación mejorada */
+            .contact-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                gap: 0.8rem;
+            }
+
+            .icon-location {
+                margin-right: 6px;
+                /* separa el icono del texto */
+            }
+
+            .contact-item i {
+                color: var(--yellow);
+                width: 20px;
                 text-align: center;
             }
-        }
-    </style>
-    
-<!-- Footer Integrado con Redes Sociales -->
-    <footer id="contacto">
-        <div class="footer-content">
-            <div class="footer-info">
-                <div class="footer-logo">DYS<span></span></div>
-                <div class="footer-contact">
-                    <p><i class="fas fa-phone"></i> +34 621 14 87 45</p>
-                    <p><i class="fas fa-envelope"></i> info@dyspdj.com</p>
-                </div>
-            </div>
-            
-            <div class="social-section">
-                <h3 class="social-title">Síguenos en Redes</h3>
-                <div class="social-buttons">
-                    <a href="https://instagram.com/dys_deporteysalud" class="social-btn" target="_blank" rel="noopener">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                </div>
-            </div>
-            
-            <p class="copyright">© 2025 DYS. Todos los derechos reservados.</p>
-        </div>
-    </footer>
 
-    <style>
-        /* Ajustes opcionales para centrar mejor un solo botón */
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        /* Opcional: Hacer el botón de Instagram un poco más destacado */
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--black);
-            color: var(--light);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            border: 2px solid var(--yellow);
-        }
-        
-        .social-btn:hover {
-            background-color: var(--yellow);
-            color: var(--black);
-            transform: translateY(-3px);
-        }
-        
-        .social-btn i {
-            font-size: 1.2rem;
-        }
-        
-        /* Para móviles */
-        @media (max-width: 768px) {
-            .social-buttons {
-                flex-direction: row; /* Mantener en fila aunque sea solo uno */
-                justify-content: center;
+            .schedule {
+                margin-top: 2rem;
+                padding: 1.5rem;
+                background: rgba(255, 215, 0, 0.1);
+                border-radius: 10px;
+                border-left: 3px solid var(--yellow);
             }
-        }
-    </style>
 
-    <script>
-        // JavaScript para el funcionamiento de las pestañas de horarios
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remover clase active de todos los botones y contenidos
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Agregar clase active al botón clickeado
-                    btn.classList.add('active');
-                    
-                    // Mostrar el contenido correspondiente
-                    const tabId = btn.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+            .schedule h4 {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                color: var(--yellow);
+                font-size: 1.2rem;
+            }
+
+            .schedule-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .schedule-item:last-child {
+                border-bottom: none;
+            }
+
+            .schedule-item.closed .hours {
+                color: #ff4757;
+            }
+
+            .days {
+                font-weight: 500;
+            }
+
+            .hours {
+                color: var(--light);
+                font-weight: 400;
+            }
+
+            .premium-info {
+                padding: 1.2rem;
+                background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+                border-radius: 10px;
+                border: 1px solid rgba(255, 215, 0, 0.3);
+            }
+
+            .premium-info-margin {
+                margin-top: 1.5rem;
+            }
+
+            .premium-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: var(--yellow);
+                color: var(--black);
+                padding: 0.4rem 0.8rem;
+                border-radius: 20px;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            .premium-badge i {
+                font-size: 0.9rem;
+            }
+
+            .premium-info p {
+                margin: 0;
+                font-size: 0.9rem;
+                line-height: 1.4;
+                color: var(--light);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .schedule-item {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.2rem;
+                }
+
+                .premium-info {
+                    text-align: center;
+                }
+            }
+        </style>
+
+        <!-- Footer Integrado con Redes Sociales -->
+        <footer id="contacto">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">DYS<span></span></div>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +34 621 14 87 45</p>
+                        <p><i class="fas fa-envelope"></i> info@dyspdj.com</p>
+                    </div>
+                </div>
+
+                <div class="social-section">
+                    <h3 class="social-title">Síguenos en Redes</h3>
+                    <div class="social-buttons">
+                        <a href="https://instagram.com/dys_deporteysalud" class="social-btn" target="_blank"
+                            rel="noopener">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <p class="copyright">© 2025 DYS. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <style>
+            /* Ajustes opcionales para centrar mejor un solo botón */
+            .social-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            /* Opcional: Hacer el botón de Instagram un poco más destacado */
+            .social-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                background-color: var(--black);
+                color: var(--light);
+                padding: 0.8rem 1.5rem;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: 0.3s;
+                border: 2px solid var(--yellow);
+            }
+
+            .social-btn:hover {
+                background-color: var(--yellow);
+                color: var(--black);
+                transform: translateY(-3px);
+            }
+
+            .social-btn i {
+                font-size: 1.2rem;
+            }
+
+            /* Para móviles */
+            @media (max-width: 768px) {
+                .social-buttons {
+                    flex-direction: row;
+                    /* Mantener en fila aunque sea solo uno */
+                    justify-content: center;
+                }
+            }
+        </style>
+
+        <script>
+            // JavaScript para el funcionamiento de las pestañas de horarios
+            document.addEventListener('DOMContentLoaded', function () {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remover clase active de todos los botones y contenidos
+                        tabBtns.forEach(b => b.classList.remove('active'));
+                        tabContents.forEach(c => c.classList.remove('active'));
+
+                        // Agregar clase active al botón clickeado
+                        btn.classList.add('active');
+
+                        // Mostrar el contenido correspondiente
+                        const tabId = btn.getAttribute('data-tab');
+                        document.getElementById(tabId).classList.add('active');
+                    });
                 });
             });
-        });
-        // JavaScript para el navbar que se oculta al hacer scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            let lastScrollTop = 0;
-            const navbar = document.querySelector('header');
-            const scrollThreshold = 60;
-            const navbarHeight = navbar.offsetHeight;
-            
-            // Añadir transición suave al navbar
-            navbar.style.transition = 'transform 0.3s ease-in-out';
-            
-            // Configurar scroll-padding dinámico
-            document.documentElement.style.setProperty('--scroll-padding', navbarHeight + 'px');
-            document.documentElement.style.scrollPaddingTop = navbarHeight + 'px';
-            
-            window.addEventListener('scroll', function() {
-                if (window.innerWidth <= 768) {
-                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-                        // Scroll hacia abajo - ocultar navbar
-                        navbar.style.transform = 'translateY(-100%)';
+            // JavaScript para el navbar que se oculta al hacer scroll
+            document.addEventListener('DOMContentLoaded', function () {
+                let lastScrollTop = 0;
+                const navbar = document.querySelector('header');
+                const scrollThreshold = 60;
+                const navbarHeight = navbar.offsetHeight;
+
+                // Añadir transición suave al navbar
+                navbar.style.transition = 'transform 0.3s ease-in-out';
+
+                // Configurar scroll-padding dinámico
+                document.documentElement.style.setProperty('--scroll-padding', navbarHeight + 'px');
+                document.documentElement.style.scrollPaddingTop = navbarHeight + 'px';
+
+                window.addEventListener('scroll', function () {
+                    if (window.innerWidth <= 768) {
+                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                            // Scroll hacia abajo - ocultar navbar
+                            navbar.style.transform = 'translateY(-100%)';
+                        } else {
+                            // Scroll hacia arriba - mostrar navbar
+                            navbar.style.transform = 'translateY(0)';
+                        }
+
+                        lastScrollTop = scrollTop;
                     } else {
-                        // Scroll hacia arriba - mostrar navbar
+                        // En desktop, asegurarse de que el navbar esté visible
                         navbar.style.transform = 'translateY(0)';
                     }
-                    
-                    lastScrollTop = scrollTop;
-                } else {
-                    // En desktop, asegurarse de que el navbar esté visible
-                    navbar.style.transform = 'translateY(0)';
+                });
+
+                // Scroll suave para enlaces de navegación
+                const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') {
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                            return;
+                        }
+
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const targetPosition = targetElement.offsetTop - navbarHeight;
+
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // Actualizar URL
+                            history.pushState(null, null, targetId);
+                        }
+                    });
+                });
+
+                // JavaScript para el Carousel Mejorado (mantener tu código existente)
+                const carouselInner = document.querySelector('.carousel-inner');
+                const items = document.querySelectorAll('.carousel-item');
+                const indicators = document.querySelectorAll('.indicator');
+                const prevBtn = document.querySelector('.prev');
+                const nextBtn = document.querySelector('.next');
+                let currentIndex = 0;
+                const totalItems = items.length;
+                let autoSlideInterval;
+
+                // Función para actualizar el carrusel
+                function updateCarousel() {
+                    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                    // Actualizar indicadores
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
                 }
-            });
 
-            // Scroll suave para enlaces de navegación
-            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                        return;
-                    }
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const targetPosition = targetElement.offsetTop - navbarHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Actualizar URL
-                        history.pushState(null, null, targetId);
-                    }
-                });
-            });
-
-            // JavaScript para el Carousel Mejorado (mantener tu código existente)
-            const carouselInner = document.querySelector('.carousel-inner');
-            const items = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('.indicator');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            let currentIndex = 0;
-            const totalItems = items.length;
-            let autoSlideInterval;
-            
-            // Función para actualizar el carrusel
-            function updateCarousel() {
-                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // Actualizar indicadores
-                indicators.forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Función para siguiente slide
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
-                resetAutoSlide();
-            }
-            
-            // Función para slide anterior
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
-                resetAutoSlide();
-            }
-            
-            // Función para reiniciar el auto slide
-            function resetAutoSlide() {
-                clearInterval(autoSlideInterval);
-                autoSlideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            // Event listeners para controles
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Event listeners para indicadores
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentIndex = index;
+                // Función para siguiente slide
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % totalItems;
                     updateCarousel();
                     resetAutoSlide();
+                }
+
+                // Función para slide anterior
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    updateCarousel();
+                    resetAutoSlide();
+                }
+
+                // Función para reiniciar el auto slide
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = setInterval(nextSlide, 5000);
+                }
+
+                // Event listeners para controles
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+
+                // Event listeners para indicadores
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                        resetAutoSlide();
+                    });
+                });
+
+                // Iniciar auto slide
+                autoSlideInterval = setInterval(nextSlide, 5000);
+
+                // Pausar auto slide al pasar el ratón por encima
+                carouselInner.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlideInterval);
+                });
+
+                // Reanudar auto slide al quitar el ratón
+                carouselInner.addEventListener('mouseleave', () => {
+                    autoSlideInterval = setInterval(nextSlide, 5000);
+                });
+
+                // Inicializar
+                updateCarousel();
+
+                // Soporte para navegación con teclado
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        nextSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                    }
                 });
             });
-            
-            // Iniciar auto slide
-            autoSlideInterval = setInterval(nextSlide, 5000);
-            
-            // Pausar auto slide al pasar el ratón por encima
-            carouselInner.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-            });
-            
-            // Reanudar auto slide al quitar el ratón
-            carouselInner.addEventListener('mouseleave', () => {
-                autoSlideInterval = setInterval(nextSlide, 5000);
-            });
-            
-            // Inicializar
-            updateCarousel();
-            
-            // Soporte para navegación con teclado
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') {
-                    nextSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    prevSlide();
+            // Ocultar splash al terminar de cargar
+            window.addEventListener('load', () => {
+                const sp = document.getElementById('splash');
+                if (sp) {
+                    sp.classList.add('hidden');
+                    setTimeout(() => sp.remove(), 400);
                 }
             });
-        });
-        // Ocultar splash al terminar de cargar
-        window.addEventListener('load', () => {
-            const sp = document.getElementById('splash');
-            if (sp) {
-                sp.classList.add('hidden');
-                setTimeout(() => sp.remove(), 400);
-            }
-        });
 
-    </script>
+        </script>
+        <script>
+            function showTab(id) {
+                document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+                document.getElementById(id).classList.add("active");
+            }
+
+            async function cargarHorario() {
+                try {
+                    // 👇 Cambia la ruta si tu archivo está en otro sitio
+                    const response = await fetch("horario-dys.xlsx");
+                    const arrayBuffer = await response.arrayBuffer();
+
+                    let workbook = XLSX.read(arrayBuffer, { type: "array" });
+
+                    // Recorremos cada hoja del Excel
+                    workbook.SheetNames.forEach((sheetName, index) => {
+                        let sheet = workbook.Sheets[sheetName];
+                        let jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                        // Creamos la tabla HTML
+                        let table = document.createElement("table");
+                        table.className = "schedule-table";
+                        
+                        const numColumns = jsonData[0].length
+                        for (const [rowIndex, row] of jsonData.entries()) {
+                            let tr = document.createElement("tr");
+
+                            for (let cellIndex = 0; cellIndex < numColumns; cellIndex++) {
+                                const cell = row[cellIndex]
+                                let cellElement = document.createElement(rowIndex === 0 ? "th" : "td");
+                                cellElement.textContent = cell || "";
+                                tr.appendChild(cellElement);
+                            }
+
+                            table.appendChild(tr);
+                        }
+
+                        let tabIds = ["actividades-dirigidas", "actividades-especializadas", "crossdys"];
+                        if (tabIds[index]) {
+                            document.getElementById(tabIds[index]).innerHTML = "";
+                            document.getElementById(tabIds[index]).appendChild(table);
+                        }
+                    });
+                } catch (err) {
+                    console.error("Error cargando el horario:", err);
+                }
+            }
+
+            // Cargar automáticamente al iniciar la página
+            window.addEventListener("DOMContentLoaded", cargarHorario);
+        </script>
 </body>
+
 </html>
