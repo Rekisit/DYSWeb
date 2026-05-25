@@ -575,7 +575,7 @@
         .copyright {
             color: #888;
             font-size: 0.9rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
             grid-column: 1 / -1;
             border-top: 1px solid #333;
             padding-top: 1.5rem;
@@ -1237,7 +1237,26 @@
 
                 <p class="copyright">© 2025 DYS. Todos los derechos reservados.</p>
             </div>
+            <div class="certificate-section">
+                <img src="assets/certificado.jpeg" alt="Certificado">
+            </div>
         </footer>
+
+        <style>
+            .certificate-section {
+                margin-top: 2rem;
+                text-align: center;
+            }
+
+            .certificate-section img {
+                max-width: 1258px;
+                max-height: 258px;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            }
+
+        </style>
 
         <style>
             /* Ajustes opcionales para centrar mejor un solo botón */
@@ -1482,7 +1501,7 @@
                         // Creamos la tabla HTML
                         let table = document.createElement("table");
                         table.className = "schedule-table";
-                        
+
                         const numColumns = jsonData[0].length
                         for (const [rowIndex, row] of jsonData.entries()) {
                             let tr = document.createElement("tr");
@@ -1510,6 +1529,7 @@
 
             // Cargar automáticamente al iniciar la página
             window.addEventListener("DOMContentLoaded", cargarHorario);
+
         </script>
 </body>
 
